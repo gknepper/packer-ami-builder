@@ -1,4 +1,4 @@
-# Packer AMI Builder
+# Packer AMI Enhanced
 
 Use GitHub Action to execute Packer build commands. This supports both HCL and
 JSON packer template files.
