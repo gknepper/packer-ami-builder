@@ -14,8 +14,11 @@ to use.
 | Name            | Description                                              | Mandatory | Default  |
 | --------------- | -------------------------------------------------------- | --------- | -------- |
 | `packerVersion` | Version of Packer will be used                           | No        | `latest` |
-| `packerArgs`    | Arguments that will be passed down to the packer command | Yes       |          |
+| `packerArgsValidate`| Arguments that will be passed down to the packer command | Yes       |          |
+| `packerArgsInit`| Arguments that will be passed down to the packer command | Yes       |          |
+| `packerArgsBuild`| Arguments that will be passed down to the packer command | Yes       |          |
 | `workDir`       | Working directory inside the container                   | No        | `.`      |
+
 
 ## Example
 Create a workflow file (e.g `.github/workflows/ami-build.yaml`) like below:
@@ -33,10 +36,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Packer AMI Build
-        uses: zmingxie/packer-ami-builder@master
+        uses: gknepper/packer-ami-builder@master
         with:
           packerVersion: '1.6.4'
-          packerArgs: 'build template.json'
+          packerArgsValidate: 'validate template.json'
+          packerArgsInit: 'init template.json'
+          packerArgsBuild: 'build template.json'
           workDir: '.'
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
