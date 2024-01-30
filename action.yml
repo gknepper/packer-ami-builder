@@ -10,7 +10,13 @@ inputs:
     description: 'Version of Packer will be used'
     required: false
     default: 'latest'
-  packerArgs:
+  packerArgsInit:
+    description: 'Arguments that will be passed down to the packer command'
+    required: true
+  packerArgsValidate:
+    description: 'Arguments that will be passed down to the packer command'
+    required: true
+  packerArgsBuild:
     description: 'Arguments that will be passed down to the packer command'
     required: true
   workDir:
